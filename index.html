@@ -1,0 +1,94 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Helvetica;
+      }
+
+      .form-tarefas {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-width: 192px;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: white;
+      }
+
+      .form-login-title {
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 4px;
+      }
+
+      #btn-submit {
+        background-color: purple;
+        color: white;
+        text-transform: uppercase;
+        border: none;
+        padding: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      #lista-tarefas {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #lista-tarefas li {
+        padding: 4px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-tarefas">
+      <h1 class="form-login-title">Tarefas</h1>
+      <ul id="lista-tarefas"></ul>
+      <input type="text" placeholder="Tarefa" id="input-tarefa" />
+      <button id="btn-submit">Enviar</button>
+    </div>
+    <script>
+      const inputTarefa = document.querySelector("#input-tarefa");
+      const btnSubmit = document.querySelector("#btn-submit");
+      const listaTarefas = document.querySelector("#lista-tarefas");
+
+      
+      const carregarTarefas = async () => {
+        const resposta = await fetch("/tarefas");
+        const tarefas = await resposta.json();
+
+        listaTarefas.innerHTML = tarefas
+          .map((t) => `<li>${t.tarefa}</li>`)
+          .join("");
+      };
+
+      carregarTarefas();
+
+      btnSubmit.onclick = async () => {
+        const formTarefas = {
+          tarefa: inputTarefa.value
+        }
+      };
+    </script>
+  </body>
+</html>

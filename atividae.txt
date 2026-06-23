@@ -1,0 +1,28 @@
+fazer uma lista de tarefas
+
+
+
+no backend vamos ter uma variável (const tarefas = [vetor]) 
+toda vez que quiser uma tarefa nova, usar tarefas.punsh("Tarefa 1");
+
+
+fazer 3 endpoints:
+
+1° endpoint: fazer um GET /tarefas e precisa devolver a lista de tarefas completas
+
+2° endpoint chamado GET/tarefas /índice -> " (vai ter que acessar a tarefa que estiver em tal índice (tarefas[0])
+
+3° endopoint fazer um endpoint POST/tarefas, vai enviar um json com a proprierade "tarefa" com o valor tarefa e ela devolve um objeto 
+
+POST/tarefas{"tarefa": "moggar"} -> {sucess: true ou false}
+
+
+não vai dar certo se a tarefa tiver mais que 128 caracteres e tiver menos que 4 caracteres
+
+
+
+front end vai ter uma parte de adicionar tarefa tarefa (com input e button)
+
+e no outro lado vai ter as tarefas
+
+numa terceira parte vai ter a opção de colocar uma id e um botão pegar, fazendo isso vai aparecer a tarefa embaixo
